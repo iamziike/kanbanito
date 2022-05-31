@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import {
   Box,
   Stack,
@@ -57,7 +58,7 @@ const StyledPriorityChip = styled(Chip, {
   };
 });
 
-const Task = ({ sx, projectID, taskType, data }) => {
+const Task = ({ sx, projectID, taskType, data, taskIndex }) => {
   const [isPriorityVisible, setIsPriorityVisible] = useState(true);
   const [isMenuShown, setIsMenuShown] = useState(false);
   const menuVisibilityControlRef = useRef();
@@ -108,84 +109,111 @@ const Task = ({ sx, projectID, taskType, data }) => {
   ));
 
   return (
-    <Box
-      pt={2}
-      pb={1}
-      sx={{
-        '&::after': {
-          content: '""',
-          display: 'block',
-          width: '100%',
-          height: 1,
-          opacity: 0.4,
-          paddingTop: 2,
-          borderBottom: 'solid 1px currentColor',
-        },
-        '& *': {
-          wordWrap: 'break-word',
-        },
-        ...sx,
-      }}
-    >
-      <Stack direction='row' justifyContent='space-between' alignItems='center'>
-        <StyledPriorityChip
-          label={data.priority}
-          type={data.priority}
-          isPriorityVisible={isPriorityVisible}
-          onDelete={handlePriorityVisibilityToggle}
-          deleteIcon={
-            <Tooltip placement='right' title='Hide' arrow>
-              <VisibilityOffIcon />
-            </Tooltip>
-          }
-        />
-        <IconButton
-          ref={menuVisibilityControlRef}
-          onClick={handleMenuVisibiltyToggle}
-        >
-          <MoreHorizIcon />
-        </IconButton>
-        <CommonMenu
-          anchorElement={menuVisibilityControlRef.current}
-          isMenuOpen={isMenuShown}
-          onClose={handleMenuVisibiltyToggle}
-          items={taskMenuOptions}
-        />
-      </Stack>
-      <Typography variant='subtitle2' sx={{ whiteSpace: 'nowrap' }}>
-        <CommonScrollableWrapper>{data.title}</CommonScrollableWrapper>
-      </Typography>
-      <CommonScrollableWrapper>
-        <Typography variant='body2'>created by {data.by}</Typography>
-      </CommonScrollableWrapper>
-      <Typography variant='body3'>{getTimeAgo(data.createdOn)}</Typography>
-      <Typography variant='body2' py={2}>
-        {data.detail}
-      </Typography>
-      <Stack direction='row' spacing={4}>
-        <CommonScrollableWrapper>
-          <Stack direction='row' spacing={1}>
-            {data.tags.map((tag) => (
-              <Chip
-                label={tag}
-                key={tag + Math.random()}
-                sx={{ whiteSpace: 'nowrap', height: 'max-content', py: 0.3 }}
-                variant='body2'
+    <Draggable draggableId={data.id} index={taskIndex}>
+      {(provided, snapshot) => {
+        return (
+          <Box
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            pt={2}
+            pb={1}
+            sx={{
+              backgroundColor: snapshot.isDragging
+                ? 'text.light'
+                : 'secondary.main',
+              px: 2,
+              border: 'solid 1px',
+              borderColor: 'text.light',
+              '&::after': {
+                content: '""',
+                display: 'block',
+                width: '100%',
+                height: 1,
+                opacity: 0.4,
+                paddingTop: 2,
+                borderBottom: 'solid 1px currentColor',
+              },
+              '& *': {
+                wordWrap: 'break-word',
+              },
+              ...sx,
+            }}
+          >
+            <Stack
+              direction='row'
+              justifyContent='space-between'
+              alignItems='center'
+            >
+              <StyledPriorityChip
+                label={data.priority}
+                type={data.priority}
+                isPriorityVisible={isPriorityVisible}
+                onDelete={handlePriorityVisibilityToggle}
+                deleteIcon={
+                  <Tooltip placement='right' title='Hide' arrow>
+                    <VisibilityOffIcon />
+                  </Tooltip>
+                }
               />
-            ))}
-          </Stack>
-        </CommonScrollableWrapper>
-        <Badge
-          badgeContent={data.comments.length || '0'}
-          anchorOrigin={{
-            horizontal: 'left',
-            vertical: 'top',
-          }}
-        >
-          <Mail />
-        </Badge>
-      </Stack>
-    </Box>
+              <IconButton
+                ref={menuVisibilityControlRef}
+                onClick={handleMenuVisibiltyToggle}
+              >
+                <MoreHorizIcon />
+              </IconButton>
+              <CommonMenu
+                anchorElement={menuVisibilityControlRef.current}
+                isMenuOpen={isMenuShown}
+                onClose={handleMenuVisibiltyToggle}
+                items={taskMenuOptions}
+              />
+            </Stack>
+            <Typography variant='subtitle2' sx={{ whiteSpace: 'nowrap' }}>
+              <CommonScrollableWrapper height='max-content'>
+                {data.title}
+              </CommonScrollableWrapper>
+            </Typography>
+            <CommonScrollableWrapper height='max-content'>
+              <Typography variant='body2'>created by {data.by}</Typography>
+            </CommonScrollableWrapper>
+            <Typography variant='body3'>
+              {getTimeAgo(data.createdOn)}
+            </Typography>
+            <Typography variant='body2' py={2}>
+              {data.detail}
+            </Typography>
+            <Stack direction='row' spacing={4}>
+              <CommonScrollableWrapper>
+                <Stack direction='row' spacing={1}>
+                  {data.tags.map((tag) => (
+                    <Chip
+                      label={tag}
+                      key={tag + Math.random()}
+                      sx={{
+                        whiteSpace: 'nowrap',
+                        height: 'max-content',
+                        py: 0.3,
+                      }}
+                      variant='body2'
+                    />
+                  ))}
+                </Stack>
+              </CommonScrollableWrapper>
+              <Badge
+                badgeContent={data.comments.length || '0'}
+                anchorOrigin={{
+                  horizontal: 'left',
+                  vertical: 'top',
+                }}
+              >
+                <Mail />
+              </Badge>
+            </Stack>
+          </Box>
+        );
+      }}
+    </Draggable>
   );
 };
 

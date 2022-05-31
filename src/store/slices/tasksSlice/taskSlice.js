@@ -56,6 +56,35 @@ const tasksSlice = createSlice({
 
       delete state[payload];
     },
+    moveATask(state, { payload }) {
+      payload;
+      return state;
+    },
+    moveATaskToIndex(state, { payload }) {
+      const { source, destination } = payload;
+
+      const tasksDestination =
+        state[destination.projectID]?.data[destination.taskType];
+
+      const sourceTasks = state[source.projectID]?.data[source.taskType];
+
+      if (
+        !(
+          sourceTasks &&
+          sourceTasks.filter &&
+          tasksDestination &&
+          destination.taskIndex > -1
+        )
+      )
+        return state;
+
+      state[source.projectID].data[source.taskType] = sourceTasks.filter(
+        (task) => {
+          if (task.id !== source.taskID) return true;
+          tasksDestination.splice(destination.taskIndex, 0, task);
+        }
+      );
+    },
     updateTask() {},
     updateProject() {},
   },
@@ -64,5 +93,10 @@ const tasksSlice = createSlice({
 const tasksReducer = tasksSlice.reducer;
 export default tasksReducer;
 
-export const { createAProject, createATask, deleteATask, deleteAProject } =
-  tasksSlice.actions;
+export const {
+  createAProject,
+  createATask,
+  deleteATask,
+  deleteAProject,
+  moveATaskToIndex,
+} = tasksSlice.actions;

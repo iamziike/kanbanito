@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import { Box, Divider, Typography, styled, useTheme } from '@mui/material';
 import AddCircleSharpIcon from '@mui/icons-material/AddCircleSharp';
 
 import Task from './Task';
+import TaskCreator from './TaskCreator';
 import CommonButton from '../../commons/CommonButton/CommonButton';
 import { toLegalUpperCase } from '../../../helpers/utils';
-import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
-import TaskCreator from './TaskCreator';
-import { useState } from 'react';
 
 const StyledCommonButton = styled(CommonButton)({
   width: '100%',
@@ -57,18 +57,32 @@ const TaskBar = ({ sx, projectID, title, tasks }) => {
         />
         <Divider />
       </Box>
-      <CommonScrollableWrapper>
-        <Box>
-          {tasks.map((task) => (
-            <Task
-              key={task.id}
-              projectID={projectID}
-              taskType={title}
-              data={task}
-            />
-          ))}
-        </Box>
-      </CommonScrollableWrapper>
+      <Droppable droppableId={title}>
+        {(provided, snapshot) => (
+          <Box
+            sx={{
+              minHeight: 30,
+              backgroundColor: snapshot.isDraggingOver
+                ? 'primary.light'
+                : 'initial',
+            }}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {tasks.map((task, index) => (
+              <Task
+                sx={{ mb: 2 }}
+                key={task.id}
+                taskIndex={index}
+                projectID={projectID}
+                taskType={title}
+                data={task}
+              />
+            ))}
+            {provided.placeholder}
+          </Box>
+        )}
+      </Droppable>
       {isTaskCreatorVisible && (
         <TaskCreator
           isOpen={isTaskCreatorVisible}

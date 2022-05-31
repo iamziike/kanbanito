@@ -4,4 +4,5 @@ export {
   createATask,
   deleteATask,
   deleteAProject,
+  moveATaskToIndex,
 } from './taskSlice';

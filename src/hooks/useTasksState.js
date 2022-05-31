@@ -5,6 +5,7 @@ import {
   createATask,
   deleteATask,
   deleteAProject,
+  moveATaskToIndex,
 } from '../store/slices/tasksSlice';
 
 const useTasksState = () => {
@@ -25,6 +26,9 @@ const useTasksState = () => {
 
   const deleteProject = (projectID) => dispatch(deleteAProject(projectID));
 
+  const moveTaskToIndex = (source, destination) =>
+    dispatch(moveATaskToIndex({ source, destination }));
+
   return {
     getAllProjects,
     getProjectsID,
@@ -33,6 +37,7 @@ const useTasksState = () => {
     createTask,
     deleteTask,
     deleteProject,
+    moveTaskToIndex,
   };
 };
 

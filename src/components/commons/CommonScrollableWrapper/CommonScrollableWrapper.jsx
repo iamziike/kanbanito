@@ -1,6 +1,6 @@
 import { Box, styled } from '@mui/material';
 
-const StyledScrollableWrapper = styled(Box)({
+const StyledScrollableWrapper = styled(Box)(({ height }) => ({
   overflowY: 'scroll',
   msOverflowStyle: 'none', //IE and Edge
   scrollbarWidth: 'none',
@@ -8,9 +8,9 @@ const StyledScrollableWrapper = styled(Box)({
     display: 'none',
   },
   '& > *': {
-    height: '100%',
+    height: height,
   },
-});
+}));
 
 const CommonScrollableWrapper = ({
   sx,
