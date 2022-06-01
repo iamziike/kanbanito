@@ -1,7 +1,7 @@
 import NavigationAction from './ActionsTypes/NavigationAction';
-import CommonListItemButton from '../../../commons/CommonListItemButton/CommonListItemButton';
 import SubMenuDisplayAction from './ActionsTypes/SubMenuDisplayAction';
 import ProjectsDisplayAction from './ActionsTypesVariants/ProjectsDisplayAction';
+import CommonListItemButton from '../../../commons/CommonListItemButton';
 import {
   NAVIGATION,
   PROJECT_NAV_LINK,

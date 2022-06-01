@@ -1,36 +1,20 @@
 import { useState } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import {
-  Box,
-  Divider,
-  Typography,
-  styled,
-  useTheme,
-  Stack,
-} from '@mui/material';
+import { Box, Typography, styled, useTheme, Stack } from '@mui/material';
 import AddCircleSharpIcon from '@mui/icons-material/AddCircleSharp';
 
 import Task from './Task';
 import TaskCreator from './TaskCreator';
-import CommonButton from '../../commons/CommonButton/CommonButton';
+import CommonButton from '../../commons/CommonButton';
 import { toLegalUpperCase } from '../../../helpers/utils';
 
 const StyledCommonButton = styled(CommonButton)({
   width: '100%',
   margin: '15px auto',
   borderRadius: 5,
-  animation: 'movingBg 0.5s infinite',
-  '@keyframes movingBg': {
-    0: {
-      color: 'red',
-    },
-    100: {
-      color: 'blue',
-    },
-  },
 });
 
-const TaskBar = ({ projectID, title, tasks }) => {
+const TaskBar = ({ sx, projectID, title, tasks }) => {
   const theme = useTheme();
   const [isTaskCreatorVisible, setIsTaskCreatorVisible] = useState(false);
 
@@ -39,7 +23,7 @@ const TaskBar = ({ projectID, title, tasks }) => {
   };
 
   return (
-    <Box py={2}>
+    <Box py={2} sx={sx}>
       <Stack>
         <Typography whiteSpace='nowrap' variant='subtitle1'>
           {toLegalUpperCase(title)}
@@ -63,7 +47,6 @@ const TaskBar = ({ projectID, title, tasks }) => {
           background={`linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`}
           onClick={handleTaskCreatorVisibility}
         />
-        <Divider />
       </Stack>
       <Droppable droppableId={title}>
         {(provided, snapshot) => (
@@ -71,7 +54,7 @@ const TaskBar = ({ projectID, title, tasks }) => {
             sx={{
               minHeight: 30,
               backgroundColor: snapshot.isDraggingOver
-                ? 'primary.light'
+                ? 'rgba(0, 0, 0, 0.04)'
                 : 'initial',
             }}
             ref={provided.innerRef}

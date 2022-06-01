@@ -7,14 +7,14 @@ const StyledHeroTextWrapper = styled(Box)(({ theme }) => ({
     background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
     backgroundClip: 'text',
     '-webkitBackgroundClip': 'text',
+    textShadow: `1px 1px 1px ${theme.palette.text.dark}, 3px 3px 3px ${theme.palette.text.dark}`,
   },
 }));
 
 const Overview = () => {
   return (
     <Stack
-      py={5}
-      px={2}
+      p={5}
       spacing={2}
       textAlign='center'
       alignItems='center'

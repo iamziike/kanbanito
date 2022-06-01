@@ -10,9 +10,6 @@ export const LOGOUT = 'Logout';
 export const NAVIGATION = 'NAVIGATION';
 export const SUBMENU_DISPLAY = 'SUBMENU_DISPLAY';
 
-export const NOT_FOUND_URL = '404';
-export const MESSAGE_URL = 'messages';
-
 export const LOW = 'LOW';
 export const MEDIUM = 'MEDIUM';
 export const HIGH = 'HIGH';

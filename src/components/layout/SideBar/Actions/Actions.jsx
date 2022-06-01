@@ -21,7 +21,7 @@ import {
   SUBMENU_DISPLAY,
 } from '../../../../helpers/constants';
 import ActionMatcher from './ActionMatcher';
-import CommonScrollableWrapper from '../../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
+import CommonScrollableWrapper from '../../../commons/CommonScrollableWrapper';
 import useMediaQueryMatches from '../../../../hooks/useMediaQueryMatches';
 
 const actionItems = [
@@ -62,27 +62,7 @@ const actionItems = [
         icon: <MiscellaneousServices />,
       },
       {
-        label: MISC + Math.random(),
-        icon: <MiscellaneousServices />,
-      },
-      {
-        label: MISC + Math.random(),
-        icon: <MiscellaneousServices />,
-      },
-      {
-        label: MISC + Math.random(),
-        icon: <MiscellaneousServices />,
-      },
-      {
-        label: MISC + Math.random(),
-        icon: <MiscellaneousServices />,
-      },
-      {
-        label: MISC + Math.random(),
-        icon: <MiscellaneousServices />,
-      },
-      {
-        label: MISC + Math.random(),
+        label: MISC + ' 007',
         icon: <MiscellaneousServices />,
       },
     ],

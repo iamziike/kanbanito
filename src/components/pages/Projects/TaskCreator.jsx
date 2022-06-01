@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-import { HIGH, LOW, MEDIUM } from '../../../helpers/constants';
-import CommonDialogBox from '../../commons/CommonDialogBox/CommonDialogBox';
+import CommonDialogBox from '../../commons/CommonDialogBox';
 import useTasksState from '../../../hooks/useTasksState';
 import { toLegalUpperCase } from '../../../helpers/utils';
+import { HIGH, LOW, MEDIUM } from '../../../helpers/constants';
 
 const TaskCreator = ({ onCancel, onDone, isOpen, taskType, projectID }) => {
   const { createTask } = useTasksState();

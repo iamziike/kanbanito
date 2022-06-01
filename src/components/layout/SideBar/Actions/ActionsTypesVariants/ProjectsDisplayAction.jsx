@@ -3,9 +3,9 @@ import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutl
 import AddBoxOutlined from '@mui/icons-material/AddBoxOutlined';
 import { TextField } from '@mui/material';
 
-import useTasksState from '../../../../../hooks/useTasksState';
 import SubMenuDisplayAction from '../ActionsTypes/SubMenuDisplayAction';
-import CommonDialogBox from '../../../../commons/CommonDialogBox/CommonDialogBox';
+import CommonDialogBox from '../../../../commons/CommonDialogBox';
+import useTasksState from '../../../../../hooks/useTasksState';
 import { NAVIGATION } from '../../../../../helpers/constants';
 
 const ProjectsDisplayAction = (props) => {
@@ -42,6 +42,7 @@ const ProjectsDisplayAction = (props) => {
       <SubMenuDisplayAction
         {...{
           ...props,
+          isOpen: true,
           subMenuItems: [
             ...subMenuItems,
             {

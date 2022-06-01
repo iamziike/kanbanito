@@ -2,12 +2,12 @@ import { useRef, useState } from 'react';
 import { Collapse, Paper } from '@mui/material';
 
 import ActionMatcher from '../ActionMatcher';
-import CommonListItemButton from '../../../../commons/CommonListItemButton/CommonListItemButton';
-import CommonMenu from '../../../../commons/CommonMenu/CommonMenu';
+import CommonListItemButton from '../../../../commons/CommonListItemButton';
+import CommonMenu from '../../../../commons/CommonMenu';
 
 const SubMenuDisplayAction = (props) => {
   const paperRef = useRef();
-  const [isClick, setIsClick] = useState(false);
+  const [isClick, setIsClick] = useState(props.isOpen || false);
   const { subMenuItems, isAlternate } = props;
 
   const subMenuActions = subMenuItems.map((item) => (

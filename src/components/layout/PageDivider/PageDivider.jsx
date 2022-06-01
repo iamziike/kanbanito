@@ -5,7 +5,7 @@ import { Grid, styled } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
 import Overview from '../../pages/Overview/Overview';
 import Projects from '../../pages/Projects/Projects';
-import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
+import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper';
 import useTasksState from '../../../hooks/useTasksState';
 import usePersistantStorage from '../../../hooks/usePersistantStorage';
 

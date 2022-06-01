@@ -20,7 +20,7 @@ const initialState = JSON.parse(localStorage.getItem('tasks')) || {
           by: 'Ikezi Wisdom',
           createdOn: 1653060540601,
           detail:
-            'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would like to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa, you can also visit his github for other projects',
+            'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would love to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa with nice-ish people. Finally you can also visit his github for other projects he made',
           comments: ['Okie dokie'],
           tags: ['#FRONTEND', '#WEBDEV'],
           priority: HIGH,
@@ -199,7 +199,7 @@ const initialState = JSON.parse(localStorage.getItem('tasks')) || {
           by: 'Ikezi Wisdom',
           createdOn: 1653060540601,
           detail:
-            'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would like to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa, you can also visit his github for other projects',
+            'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would love to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa with nice-ish people. Finally you can also visit his github for other projects he made',
           comments: ['Okie dokie', 'Okie dokie', 'Okie dokie'],
           tags: ['#FRONTEND', '#WEBDEV'],
           priority: HIGH,

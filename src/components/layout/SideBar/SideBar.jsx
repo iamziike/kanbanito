@@ -1,7 +1,7 @@
 import { Paper, styled } from '@mui/material';
 import useMediaQueryMatches from '../../../hooks/useMediaQueryMatches';
 
-import CommonLogo from '../../commons/CommonLogo/CommonLogo';
+import CommonLogo from '../../commons/CommonLogo';
 import Actions from './Actions/Actions';
 
 const StyledPaperContainer = styled(Paper)({

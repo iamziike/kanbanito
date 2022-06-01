@@ -2,13 +2,14 @@ import { Grid, styled } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import useTasksState from '../../../hooks/useTasksState';
+import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper';
 import TaskBar from './TaskBar';
 
 const StyledBoxContainer = styled(Grid)({
   flexWrap: 'nowrap',
 });
 
-const Project = ({ sx, projectID, data }) => {
+const Project = ({ projectID, data }) => {
   const taskTypes = Object.keys(data);
   const { moveTaskToIndex } = useTasksState();
 
@@ -36,19 +37,26 @@ const Project = ({ sx, projectID, data }) => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <StyledBoxContainer container sx={sx}>
-        {taskTypes.map((taskType) => {
+      <CommonScrollableWrapper>
+        {(sx) => {
           return (
-            <Grid key={taskType} mx={1} item xs={12} md={6} lg={4} xl={3}>
-              <TaskBar
-                title={taskType}
-                projectID={projectID}
-                tasks={data[taskType]}
-              />
-            </Grid>
+            <StyledBoxContainer container sx={sx}>
+              {taskTypes.map((taskType) => {
+                return (
+                  <Grid item key={taskType} xs={12} md={6} lg={3}>
+                    <TaskBar
+                      sx={{ px: 1 }}
+                      title={taskType}
+                      projectID={projectID}
+                      tasks={data[taskType]}
+                    />
+                  </Grid>
+                );
+              })}
+            </StyledBoxContainer>
           );
-        })}
-      </StyledBoxContainer>
+        }}
+      </CommonScrollableWrapper>
     </DragDropContext>
   );
 };

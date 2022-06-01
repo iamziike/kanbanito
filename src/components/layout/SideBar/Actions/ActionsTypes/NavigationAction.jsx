@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import CommonListItemButton from '../../../../commons/CommonListItemButton/CommonListItemButton';
+import CommonListItemButton from '../../../../commons/CommonListItemButton';
 
 const NavigationAction = (props) => {
   const { to } = props;

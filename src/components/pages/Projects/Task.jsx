@@ -16,11 +16,11 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
+import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper';
+import CommonMenu from '../../commons/CommonMenu';
+import CommonListItemButton from '../../commons/CommonListItemButton';
 import useTimeAgo from '../../../hooks/useTimeAgo';
 import useTasksState from '../../../hooks/useTasksState';
-import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
-import CommonMenu from '../../commons/CommonMenu/CommonMenu';
-import CommonListItemButton from '../../commons/CommonListItemButton/CommonListItemButton';
 import { HIGH, MEDIUM } from '../../../helpers/constants';
 
 const StyledPriorityChip = styled(Chip, {
@@ -118,13 +118,14 @@ const Task = ({ sx, projectID, taskType, data, taskIndex }) => {
             {...provided.dragHandleProps}
             pt={2}
             pb={1}
+            borderRadius={2}
             sx={{
               backgroundColor: snapshot.isDragging
                 ? 'text.light'
                 : 'secondary.main',
               px: 2,
-              border: 'solid 1px',
-              borderColor: 'text.light',
+              border: data.isSpecial ? 'solid 3px' : 'solid 1px',
+              borderColor: data.isSpecial ? 'primary.main' : 'text.light',
               '&::after': {
                 content: '""',
                 display: 'block',
@@ -183,7 +184,7 @@ const Task = ({ sx, projectID, taskType, data, taskIndex }) => {
             <Typography variant='body2' py={2}>
               {data.detail}
             </Typography>
-            <Stack direction='row' spacing={4}>
+            <Stack direction='row' spacing={4} justifyContent='space-between'>
               <CommonScrollableWrapper>
                 <Stack direction='row' spacing={1}>
                   {data.tags.map((tag) => (

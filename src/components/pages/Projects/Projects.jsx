@@ -5,13 +5,12 @@ import MoreVerticalIcon from '@mui/icons-material/MoreVert';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import Project from './Project';
-import CommonButton from '../../commons/CommonButton/CommonButton';
-import CommonMenu from '../../commons/CommonMenu/CommonMenu';
-import CommonListItemButton from '../../commons/CommonListItemButton/CommonListItemButton';
+import CommonButton from '../../commons/CommonButton';
+import CommonMenu from '../../commons/CommonMenu';
+import CommonListItemButton from '../../commons/CommonListItemButton';
 import useTasksState from '../../../hooks/useTasksState';
 import useTimeAgo from '../../../hooks/useTimeAgo';
 import { toLegalUpperCase } from '../../../helpers/utils';
-import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
 
 const StyledProjectTopBar = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -114,11 +113,7 @@ const Projects = ({ sx, className }) => {
               }}
             />
           </StyledProjectTopBar>
-          <CommonScrollableWrapper>
-            {(sx) => {
-              return <Project sx={sx} data={project.data} projectID={id} />;
-            }}
-          </CommonScrollableWrapper>
+          <Project sx={sx} data={project.data} projectID={id} />
         </>
       ) : (
         <StyledProjectUnknown>
