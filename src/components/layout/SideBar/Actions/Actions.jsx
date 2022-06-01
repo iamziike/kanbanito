@@ -32,14 +32,14 @@ const actionItems = [
     type: NAVIGATION,
   },
   {
-    label: REPORTS,
-    icon: <BugReportIcon />,
-  },
-  {
     label: PROJECT_NAV_LINK,
     icon: <ElectricBoltOutlinedIcon />,
     subMenuItems: [],
     type: SUBMENU_DISPLAY,
+  },
+  {
+    label: REPORTS,
+    icon: <BugReportIcon />,
   },
   {
     label: MESSAGES,
