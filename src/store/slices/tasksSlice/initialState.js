@@ -10,7 +10,7 @@ import {
   TODO,
 } from '../../../helpers/constants';
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem('tasks')) || {
   project1: {
     data: {
       [TODO]: [

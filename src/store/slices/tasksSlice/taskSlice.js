@@ -85,8 +85,6 @@ const tasksSlice = createSlice({
         }
       );
     },
-    updateTask() {},
-    updateProject() {},
   },
 });
 

@@ -1,4 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 
 import {
   createAProject,
@@ -8,9 +9,17 @@ import {
   moveATaskToIndex,
 } from '../store/slices/tasksSlice';
 
-const useTasksState = () => {
+const useTasksState = (listener = null, listenerDependencies = []) => {
   const tasksState = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+
+  const store = useStore();
+
+  useEffect(() => {
+    if (!listener) return;
+    const unsubscribe = store.subscribe(() => {});
+    return unsubscribe;
+  }, listenerDependencies);
 
   const getAllProjects = () => tasksState;
 
@@ -28,6 +37,8 @@ const useTasksState = () => {
 
   const moveTaskToIndex = (source, destination) =>
     dispatch(moveATaskToIndex({ source, destination }));
+
+  // const deleteProject = (projectID) => dispatch(deleteAProject(projectID));
 
   return {
     getAllProjects,

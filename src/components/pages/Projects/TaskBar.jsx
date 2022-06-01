@@ -41,7 +41,9 @@ const TaskBar = ({ projectID, title, tasks }) => {
   return (
     <Box py={2}>
       <Stack>
-        <Typography variant='subtitle1'>{toLegalUpperCase(title)}</Typography>
+        <Typography whiteSpace='nowrap' variant='subtitle1'>
+          {toLegalUpperCase(title)}
+        </Typography>
         <Typography
           component='p'
           variant='body3'

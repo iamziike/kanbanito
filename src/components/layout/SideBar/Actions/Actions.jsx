@@ -17,8 +17,6 @@ import {
   HELP_CENTER,
   MISC,
   LOGOUT,
-  NOT_FOUND_URL,
-  MESSAGE_URL,
   NAVIGATION,
   SUBMENU_DISPLAY,
 } from '../../../../helpers/constants';
@@ -46,8 +44,6 @@ const actionItems = [
   {
     label: MESSAGES,
     icon: <EmailOutlinedIcon />,
-    to: MESSAGE_URL,
-    type: NAVIGATION,
   },
   {
     label: SETTINGS,
@@ -95,8 +91,6 @@ const actionItems = [
   {
     label: LOGOUT,
     icon: <LogoutOutlinedIcon />,
-    to: NOT_FOUND_URL,
-    type: NAVIGATION,
   },
 ];
 
