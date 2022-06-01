@@ -124,7 +124,7 @@ const Projects = ({ sx, className }) => {
           <Typography variant='h4' width='70%' textAlign='center'>
             {isProjectRecentlyDeleted
               ? 'Project has been deleted!!!'
-              : 'I think the project you are searching for does not exist or has been previously deleted 🤔🤔🤔!!!'}
+              : 'I think the project you are searching for does not exist 🤔🤔🤔!!!'}
           </Typography>
         </StyledProjectUnknown>
       )}
