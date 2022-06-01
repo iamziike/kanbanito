@@ -23,9 +23,7 @@ const PageDivider = () => {
               <StyledGridItem item xs={10} sx={sx}>
                 <Routes>
                   <Route path='/' element={<Overview />} />
-                  <Route path='/projects'>
-                    <Route path=':id' element={<Projects />} />
-                  </Route>
+                  <Route path='/projects/:id' element={<Projects />} />
                 </Routes>
               </StyledGridItem>
             );

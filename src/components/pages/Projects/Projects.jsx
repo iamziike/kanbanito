@@ -10,7 +10,7 @@ import CommonMenu from '../../commons/CommonMenu/CommonMenu';
 import CommonListItemButton from '../../commons/CommonListItemButton/CommonListItemButton';
 import useTasksState from '../../../hooks/useTasksState';
 import useTimeAgo from '../../../hooks/useTimeAgo';
-import { getRandomChoice, toLegalUpperCase } from '../../../helpers/utils';
+import { toLegalUpperCase } from '../../../helpers/utils';
 import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
 
 const StyledProjectTopBar = styled(Box)(({ theme }) => ({
@@ -25,8 +25,9 @@ const StyledProjectTopBar = styled(Box)(({ theme }) => ({
 const StyledProjectUnknown = styled(Box)({
   display: 'flex',
   justifyContent: 'center',
+  lineHeight: '300px',
   alignItems: 'center',
-  height: '50%',
+  height: '80vh',
 });
 
 const Projects = ({ sx, className }) => {
@@ -55,7 +56,7 @@ const Projects = ({ sx, className }) => {
   };
 
   return (
-    <Box px={2} sx={sx} className={className}>
+    <Box sx={sx} className={className}>
       {project ? (
         <>
           <StyledProjectTopBar>
@@ -122,12 +123,8 @@ const Projects = ({ sx, className }) => {
       ) : (
         <StyledProjectUnknown>
           <Typography variant='h4' width='70%' textAlign='center'>
-            {getRandomChoice([
-              'You must follow your own path',
-              `I wonder why I did not take care
-            of this empty page 🤔🤔🤔!!!`,
-              'You shall not pass',
-            ])}
+            Its either you recently deleted this project or you never created it
+            🤔🤔🤔!!!
           </Typography>
         </StyledProjectUnknown>
       )}
