@@ -11,15 +11,25 @@ import CommonListItemButton from '../../commons/CommonListItemButton/CommonListI
 import useTasksState from '../../../hooks/useTasksState';
 import useTimeAgo from '../../../hooks/useTimeAgo';
 import { getRandomChoice, toLegalUpperCase } from '../../../helpers/utils';
+import CommonScrollableWrapper from '../../commons/CommonScrollableWrapper/CommonScrollableWrapper';
+
+const StyledProjectTopBar = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  position: 'relative',
+  zIndex: 100,
+  padding: '10px 20px',
+  boxShadow: `0px 1px 2px 0 ${theme.palette.text.main}`,
+}));
 
 const StyledProjectUnknown = styled(Box)({
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'flex-end',
+  alignItems: 'center',
   height: '50%',
 });
 
-const Projects = ({ sx }) => {
+const Projects = ({ sx, className }) => {
   const getTimeAgo = useTimeAgo();
   const { getProject, deleteProject } = useTasksState();
   const { id } = useParams();
@@ -29,8 +39,6 @@ const Projects = ({ sx }) => {
   const [isDeletionNotifierOpen, setIsDeletionNotifierOpen] = useState(false);
 
   const project = getProject(id);
-
-  const boxTopHeightPercentage = 10;
 
   const handleDeletionNotifierVisibilityToggle = () => {
     setIsDeletionNotifierOpen((prev) => !prev);
@@ -47,17 +55,17 @@ const Projects = ({ sx }) => {
   };
 
   return (
-    <Box sx={{ ...sx, pt: 4, pl: 5 }}>
+    <Box px={2} sx={sx} className={className}>
       {project ? (
         <>
-          <Stack
-            direction='row'
-            alignItems='flex-start'
-            justifyContent='space-between'
-            pr={5}
-            height={boxTopHeightPercentage + '%'}
-          >
-            <Stack direction='row' alignItems='center' spacing={1}>
+          <StyledProjectTopBar>
+            <Stack
+              sx={{
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: { xs: 'flex-start', sm: 'center' },
+              }}
+              spacing={1.5}
+            >
               <Typography variant='h3' component='h1'>
                 🚧 {id}
               </Typography>
@@ -73,7 +81,11 @@ const Projects = ({ sx }) => {
                 created {getTimeAgo(project.createdOn)}
               </Typography>
             </Stack>
-            <Stack>
+            <Stack
+              sx={{
+                justifyContent: { xs: 'center', sm: 'center' },
+              }}
+            >
               <CommonButton
                 ref={optionsButtonRef}
                 endIcon={<MoreVerticalIcon />}
@@ -100,12 +112,12 @@ const Projects = ({ sx }) => {
                 vertical: 'bottom',
               }}
             />
-          </Stack>
-          <Project
-            sx={{ pr: 5, height: 100 - boxTopHeightPercentage + '%' }}
-            data={project.data}
-            projectID={id}
-          />
+          </StyledProjectTopBar>
+          <CommonScrollableWrapper>
+            {(sx) => {
+              return <Project sx={sx} data={project.data} projectID={id} />;
+            }}
+          </CommonScrollableWrapper>
         </>
       ) : (
         <StyledProjectUnknown>

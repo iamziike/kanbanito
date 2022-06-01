@@ -102,32 +102,37 @@ const actionItems = [
 
 const Actions = () => {
   const matches = useMediaQueryMatches({ breakpoint: 1050 });
+  const matchesMobile = useMediaQueryMatches({ breakpoint: 400 });
 
   return (
     <CommonScrollableWrapper>
-      <List>
-        {actionItems.map((actionItem) => {
-          if (matches)
-            actionItem = {
-              ...actionItem,
-              isLabelHidden: matches,
-              disableLeftIconPadding: true,
-              iconSx: {
-                mx: 'auto',
-                color: 'primary.dark',
-              },
-              iconInnerChildSx: { fontSize: 50 },
-              exploreMoreIconSx: {
-                position: 'absolute',
-                right: 2,
-                fontSize: 30,
-                color: 'primary.main',
-              },
-              isAlternate: true, //forSubmenus
-            };
-          return <ActionMatcher key={actionItem.label} {...actionItem} />;
-        })}
-      </List>
+      {(sx) => {
+        return (
+          <List sx={sx}>
+            {actionItems.map((actionItem) => {
+              if (matches)
+                actionItem = {
+                  ...actionItem,
+                  isLabelHidden: matches,
+                  disableLeftIconPadding: true,
+                  iconSx: {
+                    mx: 'auto',
+                    color: 'primary.dark',
+                  },
+                  iconInnerChildSx: { fontSize: matchesMobile ? 30 : 50 },
+                  exploreMoreIconSx: {
+                    position: 'absolute',
+                    right: 2,
+                    fontSize: 30,
+                    color: 'primary.main',
+                  },
+                  isAlternate: true, //forSubmenus
+                };
+              return <ActionMatcher key={actionItem.label} {...actionItem} />;
+            })}
+          </List>
+        );
+      }}
     </CommonScrollableWrapper>
   );
 };

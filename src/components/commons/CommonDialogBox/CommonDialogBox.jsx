@@ -26,7 +26,9 @@ const CommonDialogBox = ({
       >
         {title}
       </DialogTitle>
-      <DialogContent sx={{ ...sx, display: 'flex', flexDirection: 'column' }}>
+      <DialogContent
+        sx={{ ...sx, display: 'flex', flexDirection: 'column', width: '100%' }}
+      >
         {children}
       </DialogContent>
       <DialogActions sx={{ mx: 'auto' }}>

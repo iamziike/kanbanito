@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { Box, Divider, Typography, styled, useTheme } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Typography,
+  styled,
+  useTheme,
+  Stack,
+} from '@mui/material';
 import AddCircleSharpIcon from '@mui/icons-material/AddCircleSharp';
 
 import Task from './Task';
@@ -10,8 +17,7 @@ import { toLegalUpperCase } from '../../../helpers/utils';
 
 const StyledCommonButton = styled(CommonButton)({
   width: '100%',
-  marginTop: 15,
-  marginBottom: 15,
+  margin: '15px auto',
   borderRadius: 5,
   animation: 'movingBg 0.5s infinite',
   '@keyframes movingBg': {
@@ -24,7 +30,7 @@ const StyledCommonButton = styled(CommonButton)({
   },
 });
 
-const TaskBar = ({ sx, projectID, title, tasks }) => {
+const TaskBar = ({ projectID, title, tasks }) => {
   const theme = useTheme();
   const [isTaskCreatorVisible, setIsTaskCreatorVisible] = useState(false);
 
@@ -33,8 +39,8 @@ const TaskBar = ({ sx, projectID, title, tasks }) => {
   };
 
   return (
-    <Box sx={sx}>
-      <Box>
+    <Box py={2}>
+      <Stack>
         <Typography variant='subtitle1'>{toLegalUpperCase(title)}</Typography>
         <Typography
           component='p'
@@ -56,7 +62,7 @@ const TaskBar = ({ sx, projectID, title, tasks }) => {
           onClick={handleTaskCreatorVisibility}
         />
         <Divider />
-      </Box>
+      </Stack>
       <Droppable droppableId={title}>
         {(provided, snapshot) => (
           <Box

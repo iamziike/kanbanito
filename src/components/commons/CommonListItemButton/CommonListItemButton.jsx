@@ -63,7 +63,11 @@ const CommonListItemButton = ({
       )}
       {label && !isLabelHidden && (
         <CommonScrollableWrapper>
-          <ListItemText sx={textSx}>{label}</ListItemText>
+          {(sx) => {
+            return (
+              <ListItemText sx={{ ...sx, ...textSx }}>{label}</ListItemText>
+            );
+          }}
         </CommonScrollableWrapper>
       )}
       {isIncludesExpandMore && (

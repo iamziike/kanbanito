@@ -2,8 +2,6 @@ import { Grid, styled } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import useTasksState from '../../../hooks/useTasksState';
-import useMediaQueryMatches from '../../../hooks/useMediaQueryMatches';
-
 import TaskBar from './TaskBar';
 
 const StyledBoxContainer = styled(Grid)({
@@ -12,13 +10,7 @@ const StyledBoxContainer = styled(Grid)({
 
 const Project = ({ sx, projectID, data }) => {
   const taskTypes = Object.keys(data);
-  const matches = useMediaQueryMatches({ breakpoint: 1250 });
-
   const { moveTaskToIndex } = useTasksState();
-
-  let gridColumnCount = 3;
-
-  if (matches) gridColumnCount = 4;
 
   const handleDragEnd = ({ source, destination, draggableId }) => {
     if (!destination) return;
@@ -44,10 +36,10 @@ const Project = ({ sx, projectID, data }) => {
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
-      <StyledBoxContainer sx={sx} container spacing={1}>
+      <StyledBoxContainer container sx={sx}>
         {taskTypes.map((taskType) => {
           return (
-            <Grid key={taskType} item xs={gridColumnCount} height='100%'>
+            <Grid key={taskType} mx={1} item xs={12} md={6} lg={4} xl={3}>
               <TaskBar
                 title={taskType}
                 projectID={projectID}

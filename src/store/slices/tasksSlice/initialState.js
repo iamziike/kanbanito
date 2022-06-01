@@ -22,7 +22,7 @@ const initialState = {
           detail:
             'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would like to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa, you can also visit his github for other projects',
           comments: ['Okie dokie'],
-          tags: ['#FRONTEND', '#WEBDEV', '#REACT', '#JAZZIFYING', '#JAZZIFY'],
+          tags: ['#FRONTEND', '#WEBDEV'],
           priority: HIGH,
           isSpecial: true,
         },
@@ -32,7 +32,7 @@ const initialState = {
           by: 'John Doe',
           createdOn: 1653060540601,
           detail:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo in natus saepe voluptas corrupti et voluptatum est maxime aliquid aliquam, consequuntur vitae consectetur error, ex, nobis nihil. Saepe perspiciatis, iure, repellendus assumenda aliquid aperiam sapiente veritatis ullam commodi temporibus sit deserunt quibusdam fugiat doloremque labore incidunt enim neque eligendi excepturi quisquam? Culpa quasi atque soluta eaque fugiat fuga fugit perferendis repellat tempora ullam numquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquae ',
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo in natus saepe voluptas corrupti et voluptatum est maxime aliquid aliquam, consequuntur vitae consectetur error, ex, nobis nihil. Saepe perspiciatis, iure, repellendus assumenda aliquid aperiam sapiente veritatis ullam commodi temporibus sit deserunt quibusdam fugiat doloremque labore incidunt enim neque eligendi excepturi quisquam? Culpa quasi atque soluta eaque fugiat fuga fugit perferendis repellat tempora ullam',
           comments: ['Okie dokie', 'Okie dokie', 'Okie dokie'],
           tags: ['#UIDESIGN', '#WEBDEV'],
           priority: LOW,
@@ -201,7 +201,7 @@ const initialState = {
           detail:
             'So I know this is kinda like a shameless ad, but if you like what you see the creator is currently seaching a for frontend position, P.S he is fluent in English, currently learning French and would like to show how hardworking he is in a working environment. He lives in Ghana, its a nice-ish country in Africa, you can also visit his github for other projects',
           comments: ['Okie dokie', 'Okie dokie', 'Okie dokie'],
-          tags: ['#FRONTEND', '#WEBDEV', '#REACT', '#JAZZIFYING', '#JAZZIFY'],
+          tags: ['#FRONTEND', '#WEBDEV'],
           priority: HIGH,
           isSpecial: true,
         },
@@ -211,7 +211,7 @@ const initialState = {
           by: 'John Doe',
           createdOn: 1653060540601,
           detail:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo in natus saepe voluptas corrupti et voluptatum est maxime aliquid aliquam, consequuntur vitae consectetur error, ex, nobis nihil. Saepe perspiciatis, iure, repellendus assumenda aliquid aperiam sapiente veritatis ullam commodi temporibus sit deserunt quibusdam fugiat doloremque labore incidunt enim neque eligendi excepturi quisquam? Culpa quasi atque soluta eaque fugiat fuga fugit perferendis repellat tempora ullam numquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquaenumquamquae ',
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo in natus saepe voluptas corrupti et voluptatum est maxime aliquid aliquam, consequuntur vitae consectetur error, ex, nobis nihil. Saepe perspiciatis, iure, repellendus assumenda aliquid aperiam sapiente veritatis ullam commodi temporibus sit deserunt quibusdam fugiat doloremque labore incidunt enim neque eligendi excepturi quisquam? Culpa quasi atque soluta eaque fugiat fuga fugit perferendis repellat tempora ullam',
           comments: [],
           tags: ['#UIDESIGN', '#WEBDEV'],
           priority: LOW,
