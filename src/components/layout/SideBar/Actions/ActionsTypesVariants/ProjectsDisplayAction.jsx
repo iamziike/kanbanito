@@ -42,7 +42,6 @@ const ProjectsDisplayAction = (props) => {
       <SubMenuDisplayAction
         {...{
           ...props,
-          isOpen: true,
           subMenuItems: [
             ...subMenuItems,
             {
