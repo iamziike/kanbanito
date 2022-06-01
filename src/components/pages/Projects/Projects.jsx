@@ -34,6 +34,9 @@ const Projects = ({ sx, className }) => {
   const { getProject, deleteProject } = useTasksState();
   const { id } = useParams();
 
+  const [isProjectRecentlyDeleted, setIsProjectRecentlyDeleted] =
+    useState(false);
+
   const optionsButtonRef = useRef();
   const [isMenuOptionsOpen, setIsMenuOpeionsOpen] = useState(false);
   const [isDeletionNotifierOpen, setIsDeletionNotifierOpen] = useState(false);
@@ -49,6 +52,7 @@ const Projects = ({ sx, className }) => {
   };
 
   const handleProjectDeletion = () => {
+    setIsProjectRecentlyDeleted(true);
     deleteProject(id);
     handleMenuOptionsVisibilityToggle();
     handleDeletionNotifierVisibilityToggle();
@@ -118,8 +122,9 @@ const Projects = ({ sx, className }) => {
       ) : (
         <StyledProjectUnknown>
           <Typography variant='h4' width='70%' textAlign='center'>
-            Its either you recently deleted this project or you never created it
-            🤔🤔🤔!!!
+            {isProjectRecentlyDeleted
+              ? 'Project has been deleted!!!'
+              : 'I think the project you are searching for does not exist or has been previously deleted 🤔🤔🤔!!!'}
           </Typography>
         </StyledProjectUnknown>
       )}
